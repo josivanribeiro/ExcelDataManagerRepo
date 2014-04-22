@@ -25,4 +25,6 @@ public interface CashFlowDAO {
 	 */
 	public void updateTotalFlow (CashFlowVO cashFlowVO) throws DataAccessException;
 	
+	public void test () throws DataAccessException;
+	
 }

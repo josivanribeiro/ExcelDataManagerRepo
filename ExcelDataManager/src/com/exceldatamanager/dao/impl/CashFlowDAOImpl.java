@@ -50,10 +50,10 @@ public class CashFlowDAOImpl extends AbstractDAO implements CashFlowDAO {
 		// gets the client name
 		Cell clientCell = getCellByLocation (FILE_1, 6, 1, 3);
 		// gets the project name
-		Cell projectCell = getCellByLocation (FILE_2, 6, 2, 3);
+		Cell projectCell = getCellByLocation (FILE_1, 6, 2, 3);
 		
 		// gets the servico eAcesso
-		Cell serviceCell = getCellByLocation (FILE_2, 6, 2, 12);		
+		Cell serviceCell = getCellByLocation (FILE_1, 6, 2, 12);		
 		
 		if (clientCell != null) {
 			clientName = clientCell.getStringCellValue();
@@ -78,9 +78,9 @@ public class CashFlowDAOImpl extends AbstractDAO implements CashFlowDAO {
 		// gets the client name
 		Cell clientCell = getCellByLocation (FILE_3, 3, 1, 1);
 		// gets the project name
-		Cell projectCell = getCellByLocation (FILE_4, 3, 1, 2);
+		Cell projectCell = getCellByLocation (FILE_3, 3, 1, 2);
 		// gets the service name
-		Cell serviceCell = getCellByLocation (FILE_4, 3, 1, 3);
+		Cell serviceCell = getCellByLocation (FILE_3, 3, 1, 3);
 		
 		if (clientCell != null) {
 			clientCell.setCellValue (cashFlowVO.getClientName());
@@ -92,8 +92,29 @@ public class CashFlowDAOImpl extends AbstractDAO implements CashFlowDAO {
 			serviceCell.setCellValue (cashFlowVO.getServiceName());
 		}
 		// saves the changes in the file
-		saveChanges (FILE_3);
-		saveChanges (FILE_4);
+		saveChanges (FILE_3);		
 	}
+
+	@Override
+	public void test() throws DataAccessException {
+		String clientName = null;
+				
+		// logic to read a value 
+		// gets the client name
+		Cell clientCell = getCellByLocation (FILE_1, 6, 1, 3);
+				
+		if (clientCell != null) {
+			clientName = clientCell.getStringCellValue();
+		}
+		
+		// logic to update a value
+		Cell clientOuputCell = getCellByLocation (FILE_3, 3, 1, 1);
+		if (clientOuputCell != null) {
+			clientOuputCell.setCellValue (clientName);
+		}
+		// saves the changes in the file
+		saveChanges (FILE_3);		
+	}	
+	 
 
 }

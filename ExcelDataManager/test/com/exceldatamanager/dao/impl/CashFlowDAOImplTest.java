@@ -22,7 +22,7 @@ public class CashFlowDAOImplTest {
 	} 
 	
 	
-	@Test
+	//@Test
 	public void testGetTotalFlow() throws DataAccessException {
 		CashFlowVO cashFlowVO = cashFlowDAOImpl.getTotalFlow();
 		assertNotNull ("totalFlow is null", cashFlowVO);
@@ -30,11 +30,19 @@ public class CashFlowDAOImplTest {
 	
 	@Test
 	public void testUpdateTotalFlow(){
-		CashFlowVO cashFlowVO = new CashFlowVO ();
-		cashFlowVO.setClientName ("ClientName");
-		cashFlowVO.setProjectName("ProjectName");
 		try {
+			CashFlowVO cashFlowVO = cashFlowDAOImpl.getTotalFlow();
+			
 			cashFlowDAOImpl.updateTotalFlow (cashFlowVO);
+		} catch (DataAccessException e) {
+			fail (e.getMessage());
+		}
+	}
+	
+	//@Test
+	public void testTest(){
+		try {
+			cashFlowDAOImpl.test ();
 		} catch (DataAccessException e) {
 			fail (e.getMessage());
 		}
